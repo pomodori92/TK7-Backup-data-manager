@@ -7,23 +7,23 @@
 
 const { ipcRenderer } = require('electron');
 const fs = require('fs-extra');
-
-let username = require("os").userInfo().username;
+const username = require("os").userInfo().username;
 const openExplorer = require('open-file-explorer');
-const backupPath = '%LOCALAPPDATA%\\TekkenGame\\Saved\\SaveGames\\BackupTEKKEN7';
-const tekkenPath = '%LOCALAPPDATA%\\TekkenGame\\Saved\\SaveGames\\TEKKEN7';
-const tekkenPath2 = '/Users/'+username+'/AppData/Local/TekkenGame/Saved/SaveGames/TEKKEN7/';
-const backupPath2 = '/Users/'+username+'/AppData/Local/TekkenGame/Saved/SaveGames/TekkenSaveBackup';
+
+const win32TekkenPath = '%LOCALAPPDATA%\\TekkenGame\\Saved\\SaveGames\\TEKKEN7';
+const win32BackupPath = win32TekkenPath+'SaveBackup';
+const unixTekkenPath = '/Users/'+username+'/AppData/Local/TekkenGame/Saved/SaveGames/TEKKEN7/';
+const unixBackupPath = '/TekkenSaveBackup';
 
 function openBackupDir() {
-    openExplorer(backupPath, error => {
+    openExplorer(win32BackupPath, error => {
         if (error)
             snack(error, 'error');
     });
 }
 
 function openTekkenDir() {
-    openExplorer(tekkenPath, error => {
+    openExplorer(win32TekkenPath, error => {
         if (error)
             snack(error, 'error');
     });
@@ -31,7 +31,7 @@ function openTekkenDir() {
 
 function backupSave() {
     try {
-        fs.copySync(tekkenPath, backupPath);
+        fs.copySync(unixTekkenPath, unixBackupPath);
         snack('Success!');
     } catch (error) {
         snack(error, 'error');
@@ -40,7 +40,7 @@ function backupSave() {
 
 function importSave() {
     try {
-        fs.copySync(backupPath, tekkenPath);
+        fs.copySync(unixBackupPath, unixTekkenPath);
         snack('Success!');
     } catch (error) {
         snack(error, 'error');
