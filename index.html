@@ -2,36 +2,38 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="assets/css/index.css">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-  <!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
-  <!--    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
-  <title>Tekken Saver</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="assets/css/index.css">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+	<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+	<!--    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
+	<title>Tekken Saver</title>
 </head>
 
 <body>
-<div class="container">
+	<div class="container">
 
-  <h1>Welcome to Tekken Save Manager</h1>
-  <div>
-    This app is designed to prevent save loss due to corruption or game reinstallation <br>
-    I do not condone or approve save scumming, as this tool is only made for honest backup usage
-  </div>
-  <div class="buttons">
-    <button class="backup" onclick="backupSave()">⇩ Backup my new save </button>
-    <button class="import" onclick="importSave()">⇧ Import my old save</button>
-    <br>
-    <button class="backup" onclick="openBackupDir()">📁 Open Saved folder</button>
-    <button class="import" onclick="openTekkenDir()">📁 Open Tekken folder</button>
-  </div>
+		<h1>Welcome to Tekken Save Manager</h1>
+		<div>
+			This app is designed to prevent save loss due to corruption or game reinstallation.
+			<br>
+			I do not condone or approve save scumming, as this tool is only made for honest backup usage.
+		</div>
+		<div class="buttons">
+			<button class="backup" onclick="backupSave()">⇩ Backup my new save</button>
+			<button class="import" onclick="importSave()">⇧ Import my old save</button>
+			<br>
+			<button class="backup" onclick="openBackupDir()">📁 Open Saved folder</button>
+			<button class="import" onclick="openTekkenDir()">📁 Open Tekken folder</button>
+		</div>
 
-  <!-- The actual snackbar -->
-  <div id="snackbar">Some text some message..</div>
-</div>
+		<!-- The actual snackbar -->
+		<div id="snackbar"></div>
+	</div>
 
-<!-- You can also require other files to run in this process -->
-<script src="./renderer.js"></script>
+	<!-- You can also require other files to run in this process -->
+	<script src="./renderer.js"></script>
 </body>
 
 </html>
