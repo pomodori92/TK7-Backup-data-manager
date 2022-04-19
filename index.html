@@ -8,20 +8,31 @@
 		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
 	<!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
 	<!--    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">-->
-	<title>Tekken Saver</title>
+	<title>Tekken 7 Save Manager</title>
 </head>
 
 <body>
+	<svg>
+		<symbol id="icon-download" viewBox="0 0 32 32">
+			<path
+				d="M16 18l8-8h-6v-8h-4v8h-6zM23.273 14.727l-2.242 2.242 8.128 3.031-13.158 4.907-13.158-4.907 8.127-3.031-2.242-2.242-8.727 3.273v8l16 6 16-6v-8z">
+			</path>
+		</symbol>
+	</svg>
 	<div class="container">
 
-		<h1>Welcome to Tekken Save Manager</h1>
+		<h1>Welcome to Tekken 7 Save Manager</h1>
 		<div>
 			This app is designed to prevent save loss due to corruption or game reinstallation.
 			<br>
 			I do not condone or approve save scumming, as this tool is only made for honest backup usage.
 		</div>
 		<div class="buttons">
-			<button class="backup" onclick="backupSave()">⇩ Backup my new save</button>
+			<button class="backup" onclick="backupSave()">
+				<svg class="icon icon-download">
+					<use xlink:href="#icon-download"></use>
+				</svg>
+				Backup my new save</button>
 			<button class="import" onclick="importSave()">⇧ Import my old save</button>
 			<br>
 			<button class="backup" onclick="openBackupDir()">📁 Open Saved folder</button>
