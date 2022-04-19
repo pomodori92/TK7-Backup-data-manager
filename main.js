@@ -9,9 +9,9 @@ function createWindow () {
 
 	const mainWindow = new BrowserWindow({
 		icon : './build/icon.png',
-		width: 550,
-		height: 435,
-		resizable: false,
+		width: 640,
+		height: 480,
+		resizable: true,
 		webPreferences: {
 			preload: path.join(__dirname, 'preload.js'),
 			nodeIntegration: true,
