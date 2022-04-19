@@ -4,69 +4,69 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
-// Dans le processus de rendu (page web).
-const { ipcRenderer } = require('electron')
-const fs = require('fs-extra')
 
-let username = require("os").userInfo().username
-const openExplorer = require('open-file-explorer');
+const { shell } = require('electron');
+const fse = require('fs-extra');
 
-function openBackupDir(){
-    const path = 'C:\\TekkenSaveBackup';
-    openExplorer(path, err => {
-        if(err) {
-            console.log(err);
-            snack(err);
-        }
-        else {
-            //Do Something
-        }
-    });
+const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
+const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
+
+function openBackupDir() {
+	shell.openPath(backupPath).then((error) => {
+    if (error)
+		snack(error, 'error');
+	});
 }
 
-function openTekkenDir(){
-    const path = 'C:\\Users\\'+username+'\\AppData\\Local\\TekkenGame\\Saved\\SaveGames\\TEKKEN7';
-    openExplorer(path, err => {
-        if(err) {
-            console.log(err);
-            snack(err);
-        }
-        else {
-            //Do Something
-        }
-    });
+function openTekkenDir() {
+	shell.openPath(backupPath).then((error) => {
+	if (error)
+		snack(error, 'error');
+	});
 }
 
-function backupSave(){
-    try {
-        fs.copySync('/Users/'+username+'/AppData/Local/TekkenGame/Saved/SaveGames/TEKKEN7/', '/TekkenSaveBackup')
-        console.log('Success!')
-        snack('Success!')
-
-    } catch (err) {
-        console.error(err)
-        snack(err)
-
-    }
+function backupSave() {
+	try {
+		fse.copySync(tekkenPath, backupPath);
+		snack('Backupped successfully!');
+	} catch (error) {
+		snack(error, 'error');
+	}
 }
 
 function importSave() {
-    try {
-        fs.copySync( '/TekkenSaveBackup', '/Users/'+username+'/AppData/Local/TekkenGame/Saved/SaveGames/TEKKEN7/')
-        console.log('Success!')
-        snack('Success!')
-    } catch (err) {
-        console.error(err)
-        snack(err)
-    }
+	try {
+		fse.copySync(backupPath, tekkenPath);
+		snack('Saves imported!');
+	} catch (error) {
+		snack(error, 'error');
+	}
 }
 
-function snack(msg) {
-    // Get the snackbar DIV
-    let x = document.getElementById("snackbar");
-    x.innerText = msg
-    // Add the "show" class to DIV
-    x.className = "show";
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+function snack(message, messageType = '') {
+	if (!message)
+		return;
+
+	switch (messageType.toLowerCase()) {
+		case 'error':
+			console.error(message);
+			break;
+
+		case 'info':
+			console.info(message);
+			break;
+
+		default:
+			console.log(message);
+	}
+
+	// Get the snackbar DIV
+	let snack = document.getElementById('snackbar');
+	snack.innerText = message;
+	// Add the 'show' class to DIV
+	snack.className = 'show';
+	// After 3 seconds, remove the show class from DIV
+	setTimeout(function () {
+		snack.className = snack.className.replace('show', '');
+	}, 3000);
 }
