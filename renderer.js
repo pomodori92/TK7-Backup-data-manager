@@ -19,7 +19,7 @@ function openBackupDir() {
 }
 
 function openTekkenDir() {
-	shell.openPath(backupPath).then((error) => {
+	shell.openPath(tekkenPath).then((error) => {
 	if (error)
 		snack(error, 'error');
 	});
