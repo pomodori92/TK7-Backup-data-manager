@@ -10,20 +10,65 @@ const fse = require('fs-extra');
 
 const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
 const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
+const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
+
+function cleanReplay() {
+	try {
+		let replayPath = fse.readdirSync(tekkenPath).filter((dir) =>
+			fse.statSync(`${tekkenPath}\\${dir}`).isDirectory()
+		);
+
+		if (replayPath?.length !== 1)
+			throw new RangeError('Too much Steam ID directories found!');
+
+		replayPath = `${tekkenPath}\\${replayPath[0]}`
+		fse
+			.readdirSync(replayPath)
+			.filter((file) => file.indexOf('replay') >= 0)
+			.forEach((file) => {
+				alert(`${replayPath}\\${file}`);
+				// fse.unlinkSync(`${replayPath}\\${file}`);
+			});
+		snack('Replays deleted successfully!', 'info');
+	} catch (error) {
+		snack(error, 'error');
+	}
+}
+
+
+function cleanLogs() {
+	try {
+		fse
+			.readdirSync(logPath)
+			.filter((dir) => fse.statSync(`${logPath}\\${dir}`).isDirectory())
+			.forEach((dir) => {
+				fse.rmdirSync(`${logPath}\\${dir}`, { recursive: true }, (error) => {
+					if (error)
+						throw error;
+				});
+			});
+		snack('Logs deleted successfully!', 'info');
+	} catch (error) {
+		snack(error, 'error');
+	}
+}
+
 
 function openBackupDir() {
 	shell.openPath(backupPath).then((error) => {
-    if (error)
-		snack(error, 'error');
+		if (error)
+			snack(error, 'error');
 	});
 }
 
+
 function openTekkenDir() {
 	shell.openPath(tekkenPath).then((error) => {
-	if (error)
-		snack(error, 'error');
+		if (error)
+			snack(error, 'error');
 	});
 }
+
 
 function backupSave() {
 	try {
@@ -34,6 +79,7 @@ function backupSave() {
 	}
 }
 
+
 function importSave() {
 	try {
 		fse.copySync(backupPath, tekkenPath);
@@ -42,6 +88,7 @@ function importSave() {
 		snack(error, 'error');
 	}
 }
+
 
 function snack(message, messageType = '') {
 	if (!message)
@@ -68,5 +115,5 @@ function snack(message, messageType = '') {
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function () {
 		snack.className = snack.className.replace('show', '');
-	}, 3000);
+	}, 5000);
 }
