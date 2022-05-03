@@ -26,8 +26,7 @@ function cleanReplay() {
 			.readdirSync(replayPath)
 			.filter((file) => file.indexOf('replay') >= 0)
 			.forEach((file) => {
-				alert(`${replayPath}\\${file}`);
-				// fse.unlinkSync(`${replayPath}\\${file}`);
+				fse.unlinkSync(`${replayPath}\\${file}`);
 			});
 		snack('Replays deleted successfully!', 'info');
 	} catch (error) {
