@@ -19,7 +19,7 @@ function cleanReplay() {
 		);
 
 		if (replayPath?.length !== 1)
-			throw new RangeError('Too much Steam ID directories found!');
+			throw new RangeError('Too many Steam ID folders found!');
 
 		replayPath = `${tekkenPath}\\${replayPath[0]}`
 		fse
