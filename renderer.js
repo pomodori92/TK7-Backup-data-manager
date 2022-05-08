@@ -5,28 +5,28 @@
 // selectively enable features needed in the rendering
 // process.
 
-const { shell } = require('electron');
-const fse = require('fs-extra');
+import { shell } from 'electron';
+import { readdirSync, statSync, unlinkSync, rmdirSync, copySync } from 'fs-extra';
 
 const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
 const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
 const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
 
+
 function cleanReplay() {
 	try {
-		let replayPath = fse.readdirSync(tekkenPath).filter((dir) =>
-			fse.statSync(`${tekkenPath}\\${dir}`).isDirectory()
+		let replayPath = readdirSync(tekkenPath).filter((dir) =>
+			statSync(`${tekkenPath}\\${dir}`).isDirectory()
 		);
 
 		if (replayPath?.length !== 1)
 			throw new RangeError('Too many Steam ID folders found!');
 
 		replayPath = `${tekkenPath}\\${replayPath[0]}`
-		fse
-			.readdirSync(replayPath)
+		readdirSync(replayPath)
 			.filter((file) => file.indexOf('replay') >= 0)
 			.forEach((file) => {
-				fse.unlinkSync(`${replayPath}\\${file}`);
+				unlinkSync(`${replayPath}\\${file}`);
 			});
 		snack('Replays deleted successfully!', 'info');
 	} catch (error) {
@@ -37,11 +37,10 @@ function cleanReplay() {
 
 function cleanLogs() {
 	try {
-		fse
-			.readdirSync(logPath)
-			.filter((dir) => fse.statSync(`${logPath}\\${dir}`).isDirectory())
+		readdirSync(logPath)
+			.filter((dir) => statSync(`${logPath}\\${dir}`).isDirectory())
 			.forEach((dir) => {
-				fse.rmdirSync(`${logPath}\\${dir}`, { recursive: true }, (error) => {
+				rmdirSync(`${logPath}\\${dir}`, { recursive: true }, (error) => {
 					if (error)
 						throw error;
 				});
@@ -71,7 +70,7 @@ function openTekkenDir() {
 
 function backupSave() {
 	try {
-		fse.copySync(tekkenPath, backupPath);
+		copySync(tekkenPath, backupPath);
 		snack('Backupped successfully!');
 	} catch (error) {
 		snack(error, 'error');
@@ -81,7 +80,7 @@ function backupSave() {
 
 function importSave() {
 	try {
-		fse.copySync(backupPath, tekkenPath);
+		copySync(backupPath, tekkenPath);
 		snack('Saves imported!');
 	} catch (error) {
 		snack(error, 'error');
