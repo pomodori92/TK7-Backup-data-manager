@@ -5,43 +5,88 @@
 // selectively enable features needed in the rendering
 // process.
 
-const { shell } = require('electron');
-const fse = require('fs-extra');
+import { shell } from 'electron';
+import { readdirSync, statSync, unlinkSync, rmdirSync, copySync } from 'fs-extra';
 
 const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
 const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
+const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
+
+
+function cleanReplay() {
+	try {
+		let replayPath = readdirSync(tekkenPath).filter((dir) =>
+			statSync(`${tekkenPath}\\${dir}`).isDirectory()
+		);
+
+		if (replayPath?.length !== 1)
+			throw new RangeError('Too many Steam ID folders found!');
+
+		replayPath = `${tekkenPath}\\${replayPath[0]}`
+		readdirSync(replayPath)
+			.filter((file) => file.indexOf('replay') >= 0)
+			.forEach((file) => {
+				unlinkSync(`${replayPath}\\${file}`);
+			});
+		snack('Replays deleted successfully!', 'info');
+	} catch (error) {
+		snack(error, 'error');
+	}
+}
+
+
+function cleanLogs() {
+	try {
+		readdirSync(logPath)
+			.filter((dir) => statSync(`${logPath}\\${dir}`).isDirectory())
+			.forEach((dir) => {
+				rmdirSync(`${logPath}\\${dir}`, { recursive: true }, (error) => {
+					if (error)
+						throw error;
+				});
+			});
+		snack('Logs deleted successfully!', 'info');
+	} catch (error) {
+		snack(error, 'error');
+	}
+}
+
 
 function openBackupDir() {
 	shell.openPath(backupPath).then((error) => {
-    if (error)
-		snack(error, 'error');
+		if (error)
+			snack(error, 'error');
 	});
 }
+
 
 function openTekkenDir() {
 	shell.openPath(tekkenPath).then((error) => {
-	if (error)
-		snack(error, 'error');
+		if (error)
+			snack(error, 'error');
 	});
 }
 
+
 function backupSave() {
 	try {
-		fse.copySync(tekkenPath, backupPath);
+		copySync(tekkenPath, backupPath);
 		snack('Backupped successfully!');
 	} catch (error) {
 		snack(error, 'error');
 	}
 }
 
+
 function importSave() {
 	try {
-		fse.copySync(backupPath, tekkenPath);
+		copySync(backupPath, tekkenPath);
 		snack('Saves imported!');
 	} catch (error) {
 		snack(error, 'error');
 	}
 }
+
 
 function snack(message, messageType = '') {
 	if (!message)
@@ -68,5 +113,5 @@ function snack(message, messageType = '') {
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function () {
 		snack.className = snack.className.replace('show', '');
-	}, 3000);
+	}, 5000);
 }
