@@ -12,6 +12,7 @@ const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\T
 const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
 const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
 
+
 function cleanReplay() {
 	try {
 		let replayPath = fse.readdirSync(tekkenPath).filter((dir) =>
