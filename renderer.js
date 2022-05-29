@@ -17,20 +17,31 @@ function openTekken7LocalDir() {
 	snack('Not developed yet!');
 }
 
-
 function openSteamApiDir() {
+	const wdl = require('windows-drive-letters');
+	const letters = wdl.usedSync();
+
+	letters.forEach((letter) => {
+		searchPath(`${letter}:\\`);
+	});
+}
+
+
+function searchPath(drive = '') {
 	const creamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
-	var finder = require('findit2')('D:\\');
+	// var finder = require('findit2')(drive);
+	var finder = require('findit2')(drive);
 	var path = require('path');
 	var dirToCheck = '';
 
 	finder.on('directory', function (dir, stat, stop, linkPath) {
 		if (path.basename(dir) === 'Steam') {
 			dirToCheck = `${dir}${creamApiInstallDir}`;
-			if (fse.access(dirToCheck)) {
-				shell.openPath(dirToCheck);
-				snack('Folder opened successfully!');
-				stop();
+			if (fse.existsSync(dirToCheck)) {
+				shell.openPath(dirToCheck).then(() => {
+					snack('Folder opened successfully!');
+					stop();
+				})
 			}
 		}
 	});
@@ -139,5 +150,5 @@ function snack(message, messageType = '') {
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function () {
 		snack.className = snack.className.replace('show', '');
-	}, 2000);
+	}, 1000);
 }

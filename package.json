@@ -14,12 +14,14 @@
 	"author": "Dizi0",
 	"license": "CC0-1.0",
 	"devDependencies": {
+		"drivelist": "^9.2.4",
 		"electron": "^18.3.1",
 		"findit2": "^2.2.3"
 	},
 	"dependencies": {
 		"findit": "^2.0.0",
 		"fs-extra": "^9.1.0",
-		"path": "^0.12.7"
+		"path": "^0.12.7",
+		"windows-drive-letters": "^4.0.0"
 	}
 }
