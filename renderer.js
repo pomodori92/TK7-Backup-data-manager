@@ -13,6 +13,11 @@ const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
 const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
 
 
+function openTekken7LocalDir() {
+	snack('Not developed yet!');
+}
+
+
 function openSteamApiDir() {
 	const creamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
 	var finder = require('findit2')('D:\\');
