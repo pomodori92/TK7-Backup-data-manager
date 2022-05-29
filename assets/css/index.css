@@ -24,7 +24,8 @@ h1 {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border: none;
+    border: 1px solid #009688;
+    border-radius: 4px;
 }
 
 .import {
@@ -38,7 +39,8 @@ h1 {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-    border: none;
+    border: 1px solid #009aef;
+    border-radius: 4px;
 }
 
 .buttons {
