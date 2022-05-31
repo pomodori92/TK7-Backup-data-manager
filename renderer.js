@@ -17,6 +17,7 @@ function openTekken7LocalDir() {
 	snack('Not developed yet!');
 }
 
+
 function openSteamApiDir() {
 	const wdl = require('windows-drive-letters');
 	const letters = wdl.usedSync();
@@ -29,7 +30,6 @@ function openSteamApiDir() {
 
 function searchPath(drive = '') {
 	const creamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
-	// var finder = require('findit2')(drive);
 	var finder = require('findit2')(drive);
 	var path = require('path');
 	var dirToCheck = '';
