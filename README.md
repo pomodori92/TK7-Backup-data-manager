@@ -1,4 +1,4 @@
-# Tekken 7 Save Manager
+# Tekken 7 Help Manager
 **I do not condone save scumming, this app is only made for honest save backup**
 
 This is a minimal Electron application based on the  `fs-extra` package.
