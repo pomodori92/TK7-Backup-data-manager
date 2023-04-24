@@ -1,6 +1,6 @@
 # Tekken:tm: 7 - Data manager 
 
-## A Microsoft Windows application for Tekken 7 on Steam to manage: backup and restore of saved data, clean crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
+## A Microsoft Windows application for Tekken 7 on Steam to manage: backup and restore of saved data, delete crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
 
 ![Application image](https://user-images.githubusercontent.com/45762339/167675808-529a735b-d7a2-43d8-9397-997a995cf429.png)
 
@@ -8,7 +8,7 @@
 
 ### Features:
 * Backup and restore saved data.
-* Clean crash log files.
+* Delete crash log files.
 * Delete replays.
 * Open the following directories: log files, replays, backup and original saved data.
 
