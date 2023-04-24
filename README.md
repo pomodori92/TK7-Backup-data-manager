@@ -1,33 +1,61 @@
-# Tekken 7 Help Manager
-**I do not condone save scumming, this app is only made for honest save backup**
+# Tekken:tm: 7 - Data manager 
 
-This is a minimal Electron application based on the  `fs-extra` package.
+## A Microsoft Windows application for Tekken 7 on Steam to manage: backup and restore of saved data, clean crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
 
-Since the savefile oftenly gets corrupted on PC, and since there is no way to repair them since it appears that the .sav files are encoded,
-I went the easy way around and created this tool to store the savefiles, and a way to import them back.
+![Application image](https://user-images.githubusercontent.com/45762339/167675808-529a735b-d7a2-43d8-9397-997a995cf429.png)
 
-If you want to build a standalone `.exe` file :
+---
+
+### Features:
+* Backup and restore saved data.
+* Clean crash log files.
+* Delete replays.
+* Open the following directories: log files, replays, backup and original saved data.
+
+---
+
+### Requirements:
+
+* RAM: >= 128 MB.
+* HDD: >= 64 MB.
+* OS: Windows 7/8/8.1/10/11.
+
+---
+
+### Download latest version
+
+* [Download the latest version here](https://github.com/pomodori92/Tekken-7-Helper/releases/latest) and execute it.
+
+---
+
+### Installation:
+
+* It's a portable application, so it doesn't need an installation.
+
+---
+
+### Do It Yourself:
+If you want to build a standalone `.exe` file:
 
 `npx electron-builder build --win portable`
 
-MIT License
+---
 
-Copyright (c) 2021 AIACHINE Adil
+### Credits:
+* [Dizi0](https://github.com/Dizi0): Application creator.
+* [giuliozelante](https://github.com/giuliozelante): Contributions.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Disclaimer
+* I don't approve save-scumming!
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+---
+
+### Copyright
+* Tekken and Tekken 7 are trademarks owned by Bandai Namco.
+
+---
+
+### Donations
+* Do you like or do you find useful this application? [Buy me a coffee here](https://paypal.me/fabriziopomodori?country.x=IT&locale.x=it_IT).
