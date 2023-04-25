@@ -6,7 +6,7 @@
 
 ---
 
-### Features:
+### Features
 * Backup and restore saved data.
 * Delete crash log files.
 * Delete replays.
@@ -14,7 +14,7 @@
 
 ---
 
-### Requirements:
+### Requirements
 
 * RAM: >= 128 MB.
 * HDD: >= 64 MB.
@@ -22,26 +22,26 @@
 
 ---
 
-### Download latest version
+### Download
 
 * [Download the latest version here](https://github.com/pomodori92/Tekken-7-Helper/releases/latest) and execute it.
 
 ---
 
-### Installation:
+### Installation
 
 * It's a portable application, so it doesn't need an installation.
 
 ---
 
-### Do It Yourself:
+### Do It Yourself
 If you want to build a standalone `.exe` file:
 
 `npx electron-builder build --win portable`
 
 ---
 
-### Credits:
+### Credits
 * [Dizi0](https://github.com/Dizi0): Application creator.
 * [giuliozelante](https://github.com/giuliozelante): Contributions.
 
