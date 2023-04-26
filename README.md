@@ -1,6 +1,6 @@
-# Tekken:tm: 7 - Data manager 
+# TK7 Backup data manager 
 
-## A Microsoft Windows application for Tekken 7 on Steam to manage: backup and restore of saved data, delete crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
+## A Microsoft Windows application for TEKKEN<sup>:tm:</sup> 7 on Steam to manage: backup and restore of saved data, delete crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
 
 ![Application image](https://user-images.githubusercontent.com/45762339/167675808-529a735b-d7a2-43d8-9397-997a995cf429.png)
 
@@ -30,12 +30,16 @@
 
 ### Installation
 
-* It's a portable application, so it doesn't need an installation.
+* It's a portable application, so it doesn't need an installation. Just execute it.
 
 ---
 
-### Do It Yourself
-If you want to build a standalone `.exe` file:
+### For developers
+* If you want to run the source code:
+
+`npm start`
+
+* If you want to build a standalone `.exe` file:
 
 `npx electron-builder build --win portable`
 
@@ -53,7 +57,7 @@ If you want to build a standalone `.exe` file:
 ---
 
 ### Copyright
-* Tekken and Tekken 7 are trademarks owned by Bandai Namco.
+* TEKKEN<sup>:tm:</sup> and &copy; since 2008 BANDAI NAMCO Entertainment Inc. TEKKEN:tm: is a trademark owned by BANDAI NAMCO Entertainment Inc.
 
 ---
 
