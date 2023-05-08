@@ -2,10 +2,6 @@
 
 ## A Microsoft Windows application for TEKKEN<sup>:tm:</sup> 7 on Steam to manage: backup and restore of saved data, delete crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.
 
-![Application image](https://user-images.githubusercontent.com/45762339/167675808-529a735b-d7a2-43d8-9397-997a995cf429.png)
-
----
-
 ### Features
 * Backup and restore saved data.
 * Delete crash log files.
@@ -18,7 +14,7 @@
 
 * RAM: >= 128 MB.
 * HDD: >= 64 MB.
-* OS: Windows 7/8/8.1/10/11.
+* OS: Windows 10/11.
 
 ---
 
