@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/style.css">
+	<meta http-equiv="Content-Security-Policy"
+		content="default-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:; script-src 'self' 'unsafe-inline'">
+	<!-- <meta http-equiv="X-Content-Security-Policy"
+		content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+	<title>Tekken 7 - Backup Saves</title>
+</head>
+
+<body>
+
+	<div class="sidebar">
+		<a href="#" class="active" onclick="changeIframe('backup.html')">
+			<img class="img" src="../images/backup-icon-white.png">
+			<br>
+			Backup
+		</a>
+		<a href="#" onclick="changeIframe('clean.html')">
+			<img class="img" src="../images/backup-icon-white.png">
+			<br>
+			Clean
+		</a>
+		<a href="clean.html">
+			<img class="img" src="../images/backup-icon-white.png">
+			<br>
+			Clean
+		</a>
+		<a href="#" onclick="changeIframe('steam.html')">
+			<img class="img" src="../images/backup-icon-white.png">
+			<br>
+			Steam
+		</a>
+	</div>
+
+	<div class="page-container">
+		<iframe src="main.html" class="iframe-container"></iframe>
+	</div>
+
+	<!--
+	<section class="section">
+		<nav class="navbar">
+			<a href="#" class="active" onclick="openPage('backup.html', this)">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Backup
+			</a>
+			<a href="#" onclick="openPage('clean.html', this)">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Clean
+			</a>
+			<a href="#" onclick="openPage('steam.html', this)">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Steam
+			</a>
+			<br>
+			<button onmouseover="changeImage(this, '../images/backup-icon-black.png')"
+				onmouseout="changeImage(this, '../images/backup-icon-white.png')"
+				onclick="document.getElementById('iframe').src='backup.html'">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Backup
+			</button>
+			<button onmouseover="changeImage(this, '../images/backup-icon-black.png')"
+				onmouseout="changeImage(this, '../images/backup-icon-white.png')"
+				onclick="document.getElementById('iframe').src='clean.html'">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Clean
+			</button>
+			<button onmouseover="changeImage(this, '../images/backup-icon-black.png')"
+				onmouseout="changeImage(this, '../images/backup-icon-white.png')"
+				onclick="document.getElementById('iframe').src='steam.html'">
+				<img class="img" src="../images/backup-icon-white.png">
+				<br>
+				Steam
+			</button>
+		</nav>
+	</section>
+
+	<main class="main">
+		<iframe id="iframe" src="main.html"></iframe>
+		</section>
+-->
+	<footer>
+		<div class="disclaimer">
+			Disclaimer: I don't approve save-scumming!
+		</div>
+		<!-- The actual snackbar -->
+		<div id="snackbar"></div>
+	</footer>
+
+	<!-- You can also require other files to run in this process -->
+
+	<script type="text/javascript" src="../js/index.js" async></script>
+	<script type="text/javascript" src="../renderer.js" async></script>
+</body>
+
+</html>

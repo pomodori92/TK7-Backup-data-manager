@@ -8,35 +8,70 @@
 import { shell } from 'electron';
 import { readdirSync, statSync, unlinkSync, rmdirSync, copySync } from 'fs-extra';
 
-const tekkenPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
+const tekken7SavePath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\SaveGames\\TEKKEN7`;
 const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
-const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
 
 
-function openTekken7LocalDir() {
-	snack('Not developed yet!');
-}
+function changeImage(elem, newImage) {
+	if (!newImage || !elem || elem.childElementCount < 1)
+		snack('Error! Element not found or without children!', 'error');
 
-
-function openSteamApiDir() {
-	const wdl = require('windows-drive-letters');
-	const letters = wdl.usedSync();
-
-	letters.forEach((letter) => {
-		searchPath(`${letter}:\\`);
+	elem.childNodes.forEach(child => {
+		if (child.src) {
+			child.src = newImage;
+			return;
+		}
 	});
 }
 
 
-function searchPath(drive = '') {
-	const creamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
+function openTekken7LocalDir() {
+	const tekken7LocalDir = '\\steamapps\\common\\TEKKEN 7';
+
+	searchSteamPath(tekken7LocalDir);
+}
+
+
+function openSteamApiDir() {
+	const steamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
+
+	searchSteamPath(steamApiInstallDir);
+}
+
+
+function searchSteamPath(pathToJoin = '') {
+	if (!pathToJoin) {
+		snack('Error! Path to join not specified!', 'error');
+		return;
+	}
+
+	const wdl = require('windows-drive-letters');
+	const letters = wdl.usedSync();
+
+	letters.forEach((letter) => {
+		finder(`${letter}:\\`, pathToJoin);
+	});
+}
+
+
+function finder(drive = '', pathToJoin = '') {
+	if (!drive || drive == ':\\') {
+		snack('Error! Drive not specified!', 'error');
+		return;
+	}
+
+	if (!pathToJoin) {
+		snack('Error! Path to join not specified!', 'error');
+		return;
+	}
+
 	var finder = require('findit2')(drive);
 	var path = require('path');
 	var dirToCheck = '';
 
 	finder.on('directory', function (dir, stat, stop, linkPath) {
 		if (path.basename(dir) === 'Steam') {
-			dirToCheck = `${dir}${creamApiInstallDir}`;
+			dirToCheck = `${dir}${pathToJoin}`;
 			if (fse.existsSync(dirToCheck)) {
 				shell.openPath(dirToCheck).then(() => {
 					snack('Folder opened successfully!');
@@ -48,7 +83,7 @@ function searchPath(drive = '') {
 }
 
 
-function cleanReplay() {
+function deleteReplays() {
 	try {
 		let replayPath = readdirSync(tekkenPath).filter((dir) =>
 			statSync(`${tekkenPath}\\${dir}`).isDirectory()
@@ -71,6 +106,8 @@ function cleanReplay() {
 
 
 function cleanLogs() {
+	const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
+
 	try {
 		readdirSync(logPath)
 			.filter((dir) => statSync(`${logPath}\\${dir}`).isDirectory())
@@ -92,14 +129,16 @@ function openBackupDir() {
 		if (error)
 			snack(error, 'error');
 	});
+	snack('Folder opened!');
 }
 
 
 function openTekkenDir() {
-	shell.openPath(tekkenPath).then((error) => {
+	shell.openPath(tekken7SavePath).then((error) => {
 		if (error)
 			snack(error, 'error');
 	});
+	snack('Folder opened!');
 }
 
 
