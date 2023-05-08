@@ -13,6 +13,41 @@ const backupPath = `${process.env.USERPROFILE}\\Saved Games\\TEKKEN7`;
 const logPath = `${process.env.LOCALAPPDATA}\\TekkenGame\\Saved\\Logs`;
 
 
+function openTekken7LocalDir() {
+	snack('Not developed yet!');
+}
+
+
+function openSteamApiDir() {
+	const wdl = require('windows-drive-letters');
+	const letters = wdl.usedSync();
+
+	letters.forEach((letter) => {
+		searchPath(`${letter}:\\`);
+	});
+}
+
+
+function searchPath(drive = '') {
+	const creamApiInstallDir = '\\steamapps\\common\\TEKKEN 7\\Engine\\Binaries\\ThirdParty\\Steamworks\\Steamv132\\Win64';
+	var finder = require('findit2')(drive);
+	var path = require('path');
+	var dirToCheck = '';
+
+	finder.on('directory', function (dir, stat, stop, linkPath) {
+		if (path.basename(dir) === 'Steam') {
+			dirToCheck = `${dir}${creamApiInstallDir}`;
+			if (fse.existsSync(dirToCheck)) {
+				shell.openPath(dirToCheck).then(() => {
+					snack('Folder opened successfully!');
+					stop();
+				})
+			}
+		}
+	});
+}
+
+
 function cleanReplay() {
 	try {
 		let replayPath = readdirSync(tekkenPath).filter((dir) =>
@@ -113,5 +148,5 @@ function snack(message, messageType = '') {
 	// After 3 seconds, remove the show class from DIV
 	setTimeout(function () {
 		snack.className = snack.className.replace('show', '');
-	}, 5000);
+	}, 1000);
 }
