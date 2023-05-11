@@ -1,21 +1,39 @@
 {
-	"name": "tekken-save-manager",
-	"version": "1.4.1",
-	"description": "A Tekken 7 Save Manager",
+	"name": "tk7-backup-data-manager",
+	"version": "1.5.0",
+	"description": "A Microsoft Windows application for Tekken 7 on Steam to manage: backup and restore of saved data, delete crash log files and delete replays. It's written in HTML, CSS, and Javascript using Electron framework.",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron ."
 	},
-	"repository": "https://github.com/Dizi0/Tekken-7-Save-Manager",
+	"repository": "https://github.com/pomodori92/TK7-Backup-data-manager",
 	"keywords": [
-		"Tekken 7",
-		"Save Manager"
+		"tekken 7",
+		"tekken",
+		"tekken 7 data manager",
+		"tekken data manager",
+		"tekken 7 backup save",
+		"tekken backup save",
+		"tekken 7 backup data",
+		"tekken backup data",
+		"tekken 7 save scumming",
+		"tekken save scumming",
+		"tekken 7 savescumming",
+		"tekken savescumming",
+		"tekken 7 save scamming",
+		"tekken save scamming",
+		"tekken 7 savescamming",
+		"tekken savescamming",
+		"tk7 backup",
+		"tk7 backup data",
+		"tk7 backup save data",
+		"tk7 save data"
 	],
-	"author": "Dizi0",
-	"license": "CC0-1.0",
+	"author": "pomodori92",
+	"license": "GPLv2",
 	"devDependencies": {
 		"drivelist": "^9.2.4",
-		"electron": "^18.3.1",
+		"electron": "^24.2.0",
 		"findit2": "^2.2.3"
 	},
 	"dependencies": {
