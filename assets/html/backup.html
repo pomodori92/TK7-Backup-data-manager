@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<svg class="hidden">
+	<symbol id="icon-download" viewBox="0 0 32 32">
+		<path
+			d="M16 18l8-8h-6v-8h-4v8h-6zM23.273 14.727l-2.242 2.242 8.128 3.031-13.158 4.907-13.158-4.907 8.127-3.031-2.242-2.242-8.727 3.273v8l16 6 16-6v-8z">
+		</path>
+	</symbol>
+	<symbol id="icon-upload" viewBox="0 0 32 32">
+		<path
+			d="M14 18h4v-8h6l-8-8-8 8h6zM20 13.5v3.085l9.158 3.415-13.158 4.907-13.158-4.907 9.158-3.415v-3.085l-12 4.5v8l16 6 16-6v-8z">
+		</path>
+	</symbol>
+	<symbol id="icon-folder-open" viewBox="0 0 32 32">
+		<path d="M26 30l6-16h-26l-6 16zM4 12l-4 18v-26h9l4 4h13v4z"></path>
+	</symbol>
+
+</svg>
+<div class="container">
+	<h1>Backup</h1>
+	<div>This app is designed to prevent save loss due to corruption or game reinstallation.</div>
+	<br>
+	<div class="buttons">
+		<button class="backup" onclick="backupSave()">
+			<svg class="icon icon-download">
+				<use xlink:href="#icon-download"></use>
+			</svg>
+			Backup last saves
+		</button>
+		<button class="import" onclick="importSave()">
+			<svg class="icon icon-upload">
+				<use xlink:href="#icon-upload"></use>
+			</svg>
+			Import last backup
+		</button>
+		<br>
+		<button class="backup" onclick="openBackupDir()">
+			<svg class="icon icon-folder-open">
+				<use xlink:href="#icon-folder-open"></use>
+			</svg>
+			Open backup folder
+		</button>
+		<button class="import" onclick="openTekkenDir()">
+			<svg class="icon icon-folder-open">
+				<use xlink:href="#icon-folder-open"></use>
+			</svg>
+			Open data folder
+		</button>
+		<br>
+		<button class="backup" onclick="openSteamApiDir()">
+			<svg class="icon icon-folder-open">
+				<use xlink:href="#icon-folder-open"></use>
+			</svg>
+			Open Steam API folder
+		</button>
+		<button class="import" onclick="openTekken7LocalDir()">
+			<svg class="icon icon-folder-open">
+				<use xlink:href="#icon-folder-open"></use>
+			</svg>
+			Open Tekken 7 Steam folder
+		</button>
+		<br>
+		<button class="backup" onclick="cleanLogs()">
+
+			Clean logs
+		</button>
+		<button class="import" onclick="deleteReplays()">
+
+			Delete replays
+		</button>
+	</div>
+</div>
+
+</html>
