@@ -19,7 +19,7 @@ function createWindow() {
 	// mainWindow.webContents.openDevTools();
 	mainWindow.setMenuBarVisibility(false);
 	// and load the index.html of the app.
-	mainWindow.loadFile('./assets/html/index.html');
+	mainWindow.loadFile(join('assets', 'html', 'index.html'));
 
 	// Open the DevTools.
 	// mainWindow.webContents.openDevTools()
@@ -34,9 +34,8 @@ app.whenReady().then(() => {
 	app.on('activate', () => {
 		// On macOS it's common to re-create a window in the app when the
 		// dock icon is clicked and there are no other windows open.
-		if (BrowserWindow.getAllWindows().length === 0) {
+		if (BrowserWindow.getAllWindows().length === 0)
 			createWindow();
-		}
 	});
 });
 
