@@ -33,7 +33,7 @@
 	"license": "GPLv2",
 	"devDependencies": {
 		"drivelist": "^9.2.4",
-		"electron": "^24.2.0",
+		"electron": "^24.8.3",
 		"findit2": "^2.2.3"
 	},
 	"dependencies": {
